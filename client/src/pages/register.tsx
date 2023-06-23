@@ -12,7 +12,7 @@ const Register = () => {
   const [errors, setErrors] = useState<any>({});
   const { authenticated } = useAuthState();
 
-  let router = useRouter();
+  const router = useRouter();
   if (authenticated) router.push("/");
 
   const handleSubmit = async (event: FormEvent) => {

@@ -6,10 +6,11 @@ import { useRouter } from "next/router";
 import { useAuthDispatch, useAuthState } from "../context/auth";
 
 const Login = () => {
-  let router = useRouter();
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<any>({});
+
   const { authenticated } = useAuthState();
   const dispatch = useAuthDispatch();
 
@@ -17,6 +18,7 @@ const Login = () => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+
     try {
       const res = await axios.post(
         "/auth/login",
