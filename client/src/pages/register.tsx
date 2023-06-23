@@ -19,15 +19,11 @@ const Register = () => {
     event.preventDefault();
 
     try {
-      const res = await axios.post(
-        "/auth/register",
-        {
-          email,
-          password,
-          username,
-        },
-        { withCredentials: true }
-      );
+      const res = await axios.post("/auth/register", {
+        email,
+        password,
+        username,
+      });
       console.log("res", res);
       router.push("/login");
     } catch (error: any) {

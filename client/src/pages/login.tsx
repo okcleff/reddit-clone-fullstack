@@ -20,11 +20,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const res = await axios.post(
-        "/auth/login",
-        { password, username },
-        { withCredentials: true }
-      );
+      const res = await axios.post("/auth/login", { password, username });
 
       dispatch("LOGIN", res.data?.user);
 
