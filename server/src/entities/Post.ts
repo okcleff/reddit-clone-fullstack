@@ -1,4 +1,4 @@
-import { Exclude, Expose } from "class-transformer";
+import { Exclude, Expose } from 'class-transformer';
 import {
   BeforeInsert,
   Column,
@@ -7,15 +7,15 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-} from "typeorm";
-import { makeId, slugify } from "../utils/helpers";
-import Comment from "./Comment";
-import BaseEntity from "./Entity";
-import Sub from "./Sub";
-import { User } from "./User";
-import Vote from "./Vote";
+} from 'typeorm';
+import { makeId, slugify } from '../utils/helpers';
+import Comment from './Comment';
+import BaseEntity from './Entity';
+import Sub from './Sub';
+import { User } from './User';
+import Vote from './Vote';
 
-@Entity("posts")
+@Entity('posts')
 export default class Post extends BaseEntity {
   @Index()
   @Column()
@@ -28,7 +28,7 @@ export default class Post extends BaseEntity {
   @Column()
   slug: string;
 
-  @Column({ nullable: true, type: "text" })
+  @Column({ nullable: true, type: 'text' })
   body: string;
 
   @Column()
@@ -38,11 +38,11 @@ export default class Post extends BaseEntity {
   username: string;
 
   @ManyToOne(() => User, (user) => user.posts)
-  @JoinColumn({ name: "username", referencedColumnName: "username" })
+  @JoinColumn({ name: 'username', referencedColumnName: 'username' })
   user: User;
 
   @ManyToOne(() => Sub, (sub) => sub.posts)
-  @JoinColumn({ name: "subName", referencedColumnName: "name" })
+  @JoinColumn({ name: 'subName', referencedColumnName: 'name' })
   sub: Sub;
 
   @Exclude()

@@ -1,4 +1,4 @@
-import { Expose } from "class-transformer";
+import { Expose } from 'class-transformer';
 import {
   Column,
   Entity,
@@ -7,12 +7,12 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-} from "typeorm";
-import BaseEntity from "./Entity";
-import Post from "./Post";
-import { User } from "./User";
+} from 'typeorm';
+import BaseEntity from './Entity';
+import Post from './Post';
+import { User } from './User';
 
-@Entity("subs")
+@Entity('subs')
 export default class Sub extends BaseEntity {
   @Index()
   @Column({ unique: true })
@@ -21,7 +21,7 @@ export default class Sub extends BaseEntity {
   @Column()
   title: string;
 
-  @Column({ type: "text", nullable: true })
+  @Column({ type: 'text', nullable: true })
   description: string;
 
   @Column({ nullable: true })
@@ -34,7 +34,7 @@ export default class Sub extends BaseEntity {
   username: string;
 
   @ManyToOne(() => User)
-  @JoinColumn({ name: "username", referencedColumnName: "username" })
+  @JoinColumn({ name: 'username', referencedColumnName: 'username' })
   user: User;
 
   @OneToMany(() => Post, (post) => post.sub)
@@ -44,7 +44,7 @@ export default class Sub extends BaseEntity {
   get imageUrl(): string {
     return this.imageUrn
       ? `${process.env.APP_URL}/images/${this.imageUrn}`
-      : "https://www.gravatar.com/avatar?d=mp&f=y";
+      : 'https://www.gravatar.com/avatar?d=mp&f=y';
   }
 
   @Expose()

@@ -1,4 +1,4 @@
-import { Exclude, Expose } from "class-transformer";
+import { Exclude, Expose } from 'class-transformer';
 import {
   BeforeInsert,
   Column,
@@ -7,14 +7,14 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-} from "typeorm";
-import { makeId } from "../utils/helpers";
-import BaseEntity from "./Entity";
-import Post from "./Post";
-import { User } from "./User";
-import Vote from "./Vote";
+} from 'typeorm';
+import { makeId } from '../utils/helpers';
+import BaseEntity from './Entity';
+import Post from './Post';
+import { User } from './User';
+import Vote from './Vote';
 
-@Entity("comments")
+@Entity('comments')
 export default class Comment extends BaseEntity {
   @Index()
   @Column()
@@ -27,7 +27,7 @@ export default class Comment extends BaseEntity {
   username: string;
 
   @ManyToOne(() => User)
-  @JoinColumn({ name: "username", referencedColumnName: "username" })
+  @JoinColumn({ name: 'username', referencedColumnName: 'username' })
   user: User;
 
   @Column()
