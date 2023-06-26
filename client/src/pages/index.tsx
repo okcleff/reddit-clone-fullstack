@@ -7,13 +7,8 @@ import axios from 'axios';
 import { Sub } from '../types';
 
 export default function Home() {
-  const fetcher = async (url: string) => {
-    return await axios.get(url).then((res) => res.data);
-  };
   const address = `/subs/sub/topSubs`;
-  const { data: topSubs } = useSWR<Sub[]>(address, fetcher);
-
-  console.log(topSubs);
+  const { data: topSubs } = useSWR<Sub[]>(address);
 
   return (
     <div className="flex max-w-5xl px-4 pt-5 mx-auto">
@@ -52,11 +47,13 @@ export default function Home() {
                     />
                   </a>
                 </Link>
+
                 <Link href={`/r/${sub.name}`}>
                   <a className="ml-2 font-bold hover:cursor-pointer">
                     /r/{sub.name}
                   </a>
                 </Link>
+
                 <p className="ml-auto font-md">{sub.postCount}</p>
               </div>
             ))}
