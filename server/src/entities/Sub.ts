@@ -44,7 +44,7 @@ export default class Sub extends BaseEntity {
   get imageUrl(): string {
     return this.imageUrn
       ? `${process.env.APP_URL}/images/${this.imageUrn}`
-      : 'https://www.gravatar.com/avatar?d=mp&f=y';
+      : 'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png';
   }
 
   @Expose()
