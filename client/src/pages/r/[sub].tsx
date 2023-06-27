@@ -5,6 +5,8 @@ import useSWR from 'swr';
 import Image from 'next/image';
 import { useAuthState } from '../../context/auth';
 import SideBar from '../../components/SideBar';
+import PostCard from '../../components/PostCard';
+import { Post } from '../../types';
 
 const SubPage = () => {
   const [ownSub, setOwnSub] = useState(false);
@@ -53,6 +55,20 @@ const SubPage = () => {
       fileInput.click();
     }
   };
+
+  // 포스트 나열하기
+  let renderPosts;
+  if (!sub) {
+    renderPosts = <p className="text-lg text-center">로딩중...</p>;
+  } else if (sub.posts.length === 0) {
+    renderPosts = (
+      <p className="text-lg text-center">아직 작성된 포스트가 없습니다.</p>
+    );
+  } else {
+    renderPosts = sub.posts.map((post: Post) => (
+      <PostCard key={post.identifier} post={post} subMutate={mutate} />
+    ));
+  }
 
   return (
     <div>
@@ -117,9 +133,7 @@ const SubPage = () => {
 
           {/* 포스트와 사이드바 */}
           <div className="flex max-w-5xl px-4 pt-5 mx-auto">
-            <div className="w-full md:mr-3 md:w-8/12">
-              {/* {renderPosts} */}
-            </div>
+            <div className="w-full md:mr-3 md:w-8/12">{renderPosts}</div>
             <SideBar sub={sub} />
           </div>
         </>
