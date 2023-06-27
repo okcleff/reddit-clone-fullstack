@@ -11,9 +11,6 @@ import { makeId } from '../utils/helpers';
 import path from 'path';
 import { fstat, unlinkSync } from 'fs';
 
-const DEFAULT_AVATAR_URL =
-  'https://w7.pngwing.com/pngs/141/425/png-transparent-user-profile-computer-icons-avatar-profile-s-free-angle-rectangle-profile-cliparts-free.png';
-
 const getSub = async (req: Request, res: Response) => {
   const name = req.params.name;
 

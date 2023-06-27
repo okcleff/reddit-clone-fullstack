@@ -139,7 +139,7 @@ const PostPage = () => {
               </div>
 
               {/* 댓글 작성 구간 */}
-              <div className="pr-6 mb-4 pl-10">
+              <div className="pr-6 pb-4 pl-10">
                 {authenticated ? (
                   <div>
                     <p className="mb-1 text-xs">
@@ -185,9 +185,11 @@ const PostPage = () => {
                 )}
               </div>
 
+              {comments && <div className="border-t border-gray-300" />}
+
               {/* 댓글 리스트 부분 */}
               {comments?.map((comment) => (
-                <div className="flex" key={comment.identifier}>
+                <div className="flex py-2" key={comment.identifier}>
                   {/* 좋아요 싫어요 기능 부분 */}
                   <div className="flex-shrink-0 w-10 py-2 text-center rounded-l">
                     {/* 좋아요 */}
