@@ -13,6 +13,7 @@ const SubPage = () => {
 
   const router = useRouter();
   const subName = router.query.sub;
+
   const {
     data: sub,
     error,
