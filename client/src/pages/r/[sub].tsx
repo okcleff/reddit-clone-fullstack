@@ -7,6 +7,7 @@ import { useAuthState } from '../../context/auth';
 import SideBar from '../../components/SideBar';
 import PostCard from '../../components/PostCard';
 import { Post } from '../../types';
+import classNames from 'classnames';
 
 const SubPage = () => {
   const [ownSub, setOwnSub] = useState(false);
@@ -41,6 +42,8 @@ const SubPage = () => {
       await axios.post(`/subs/${sub.name}/upload`, formData, {
         headers: { 'Context-Type': 'multipart/form-data' },
       });
+
+      mutate();
     } catch (error) {
       console.log(error);
     }
@@ -82,7 +85,11 @@ const SubPage = () => {
               onChange={uploadImage}
             />
             {/* 배너 이미지 */}
-            <div className="bg-gray-400">
+            <div
+              className={classNames('bg-gray-400', {
+                'cursor-pointer': authenticated,
+              })}
+            >
               {sub.bannerUrl ? (
                 <div
                   className="h-56"
@@ -112,7 +119,9 @@ const SubPage = () => {
                       alt="커뮤니티 이미지"
                       width={70}
                       height={70}
-                      className="rounded-full"
+                      className={classNames('rounded-full', {
+                        'cursor-pointer': authenticated,
+                      })}
                       onClick={() => openFileInput('image')}
                     />
                   )}
