@@ -30,7 +30,7 @@ const NavBar: React.FC = () => {
               alt="logo"
               width={80}
               height={45}
-            ></Image>
+            />
           </a>
         </Link>
       </span>
