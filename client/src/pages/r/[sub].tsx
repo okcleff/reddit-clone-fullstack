@@ -87,7 +87,7 @@ const SubPage = () => {
             {/* 배너 이미지 */}
             <div
               className={classNames('bg-gray-400', {
-                'cursor-pointer': authenticated,
+                'cursor-pointer': ownSub,
               })}
             >
               {sub.bannerUrl ? (
@@ -120,7 +120,7 @@ const SubPage = () => {
                       width={70}
                       height={70}
                       className={classNames('rounded-full', {
-                        'cursor-pointer': authenticated,
+                        'cursor-pointer': ownSub,
                       })}
                       onClick={() => openFileInput('image')}
                     />
