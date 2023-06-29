@@ -8,12 +8,6 @@
 
 <br />
 
-## 배포 주소
-
-- http://ec2-13-125-120-17.ap-northeast-2.compute.amazonaws.com/   
-
-<br />
-
 ## 로컬 실행방법
 
 ### root directory
